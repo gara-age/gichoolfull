@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <style>
+        body {
+            background: #030816;
+            color: white;
+        }
+        .signup-box {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 10px;
+             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .signup-box input, button{
+           width: 500px;
+        }
+        .signup-button {
+            cursor: pointer;
+            max-width: 500px;
+            border-radius: 10px;
+            width: 300px;
+            padding: 10px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 800px;
+            border: solid 2px #141C2C;
+            border-radius: 25px;
+        }
+
+        /* td {
+        border: solid 1px white;
+} */
+        .capsule_green {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+            margin-bottom: 10px;
+        }
+
+        .capsule_blue {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+            margin-bottom: 10px;
+        }
+
+        .capsule_gray {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+            margin-bottom: 10px;
+
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .morebtn {
+            font-size: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            width: max-content;
+            padding: 5px;
+            border: solid 2px #141C2C;
+            background-color: #030816;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 20px;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: auto;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+        }
+
+        .tr-margin {
+            padding-bottom: 15px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+
+        footer {
+            background-color: #030816;
+            height: 50px;
+        }
+
+        footer div {
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        .normal-button {
+            /* background-color: white; */
+            /* color: #030816; */
+            color: white;
+            border: solid 1px #bbb;
+            border-radius: 5px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                    <li style="padding-left: 100px;"><a class="home" href="./main.html">기출풀(Full)</a></li>
+                    <li><a href="./questions.html">기출문제</a></li>
+                    <li><a href="./test-schedules.html">시험일정</a></li>
+                    <li><a href="./mock-test.html">모의고사</a></li>
+                    <li><a href="./tips.html">시험팁</a></li>
+                    <li><a href="./subscribe.html">구독</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="./img/searchIcon.png">
+                </div>
+            </div>
+            <div class="nav-right auth-buttons">
+                <a href="./login.html" class="auth-link">로그인</a>
+                <a href="./sign-in.html" class="auth-link">회원가입</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+    <div class="signup-box">
+        <h2>회원가입</h2>
+        <input type="text" placeholder="이름">
+        <input type="email" placeholder="이메일">
+        <input type="password" placeholder="비밀번호">
+        <input type="password" placeholder="비밀번호 확인">
+<input id="phone" type="tel" placeholder="전화번호 (예: 010-1234-5678)" maxlength="13" />
+        <button class="signup-button" onclick="location.href='./sign-in-done.html'">가입하기</button>
+    </div>
+<script>
+  const phoneInput = document.getElementById('phone');
+
+  phoneInput.addEventListener('input', function (e) {
+    let numbers = e.target.value.replace(/\D/g, '');
+
+    if (numbers.length > 3 && numbers.length <= 7) {
+      numbers = numbers.replace(/^(\d{3})(\d{1,4})$/, '$1-$2');
+    } else if (numbers.length > 7) {
+      numbers = numbers.replace(/^(\d{3})(\d{4})(\d{1,4})$/, '$1-$2-$3');
+    }
+
+    e.target.value = numbers;
+  });
+</script>   
+</body>
+
+</html>

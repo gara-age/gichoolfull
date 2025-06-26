@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기출풀</title>
+    <style>
+        body {
+            background: #030816;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 800px;
+            border: solid 2px #141C2C;
+            border-radius: 25px;
+        }
+
+        .capsule_green {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+            margin-bottom: 10px;
+        }
+
+        .capsule_blue {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+            margin-bottom: 10px;
+        }
+
+        .capsule_gray {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+            margin-bottom: 10px;
+
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .morebtn {
+            font-size: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            width: max-content;
+            padding: 5px;
+            border: solid 2px #141C2C;
+            background-color: #030816;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 20px;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: auto;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+        }
+        .tr-margin {
+        padding-bottom: 15px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+        footer {
+            background-color: #030816;
+            height: 50px;
+        }
+        footer div {
+            text-align: center;
+            padding: 10px;
+        
+        }
+        .normal-button {
+            /* background-color: white; */
+            /* color: #030816; */
+            color: white;
+            border: solid 1px #bbb;
+            border-radius: 5px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                    <li style="padding-left: 100px;"><a class="home" href="./main.html">기출풀(Full)</a></li>
+                    <li><a href="./questions.html">기출문제</a></li>
+                    <li><a href="./test-schedules.html">시험일정</a></li>
+                    <li><a href="./mock-test.html">모의고사</a></li>
+                    <li><a href="./tips.html">시험팁</a></li>
+                    <li><a href="./subscribe.html">구독</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="./img/searchIcon.png">
+                </div>
+            </div>
+            <div class="nav-right auth-buttons">
+                <a href="./login.html" class="auth-link">로그인</a>
+                <a href="./sign-in.html" class="auth-link">회원가입</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+
+    <!--메인 시작-->
+    <main>
+        <section>
+            <div class="center">
+                <div class="image-container">
+                    <img src="./img/main_Book.png">
+                    <div class="overlay">
+                        <h1>자격증 시험 준비의 모든 것</h1>
+                        <p>기출문제 풀이, 시험 일정 확인, 모의고사 응시까지 한 곳에서 해결하세요.</p>
+                        <div id="btndiv"> <button style="background-color: white;" type="button" onclick="location.href='./questions.html'">기출문제 보기</button> <button
+                                style="background-color: #030816; color: white;" type="button" onclick="location.href='./mock-test.html'">모의고사 응시</button> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ver_center">
+                <div class="divText">
+                    <h1>다가오는 시험 일정</h1>
+                    <h3>놓치지 말아야 할 중요한 시험 일정을 확인하세요</h3>
+                </div>
+
+                <table>
+                    <tr>
+                        <td style="float: left;">
+                            <h2>정보처리기사</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">2025년 07월 02일</td>
+                        <td><div class="capsule_blue">접수예정</div></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">접수기간 : 2025년01월01일 ~ 2025년03월31일</td>
+                        <td sytle="text-align: right;" width="150px">시험장소 : 전국 시험장</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td style="float: left;">
+                            <h2>SQLD</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">2025년 08월 23일</td>
+                        <td><div class="capsule_blue">접수예정</div></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">접수기간 : 2025년07월21일 ~ 2025년07월25일</td>
+                        <td sytle="text-align: right;" width="150px">시험장소 : 전국 시험장</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td style="float: left;">
+                            <h2>리눅스마스터</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">2025년 07월 02일</td>
+                        <td><div class="capsule_gray">접수마감</div></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">접수기간 : 2025년01월01일 ~ 2025년03월31일</td>
+                        <td sytle="text-align: right;" width="150px">시험장소 : 전국 시험장</td>
+                    </tr>
+                </table>
+                <button type="button" onclick="location.href='./test-schedules.html'"
+                    class="morebtn">모든 시험 일정 보기 &#8594;</button>
+            </div>
+        </section>
+        <!--하단부 -->
+        <section class="btm_section">
+            <div class="ver_center">
+                <div class="divText">
+                    <h1>주요 기능</h1>
+                    <h3>자격증 시험 준비를 위한 다양한 기능을 준비합니다</h3>
+                </div>
+                <ul class="table-wrapper">
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="tr-margin" style="text-align: left;">
+                                    기출문제 풀이
+                                    <svg class="small-icon" viewBox="0 0 24 24" fill="none">
+
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M15.4998 5.49994L18.3282 8.32837M3 20.9997L3.04745 20.6675C3.21536 19.4922 3.29932 18.9045 3.49029 18.3558C3.65975 17.8689 3.89124 17.4059 4.17906 16.9783C4.50341 16.4963 4.92319 16.0765 5.76274 15.237L17.4107 3.58896C18.1918 2.80791 19.4581 2.80791 20.2392 3.58896C21.0202 4.37001 21.0202 5.63634 20.2392 6.41739L8.37744 18.2791C7.61579 19.0408 7.23497 19.4216 6.8012 19.7244C6.41618 19.9932 6.00093 20.2159 5.56398 20.3879C5.07171 20.5817 4.54375 20.6882 3.48793 20.9012L3 20.9997Z"
+                                                stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </g>
+
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr-margin" style="text-align: left;">다양한 자격증의 기출문제를 풀어보고 해설을 확인하세요</td>
+                            </tr>
+                            <tr>
+                                <td><a class="normal-button" href="./questions.html">기출문제 보기</a></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="tr-margin" style="text-align: left;">
+                                    모의고사 응시
+                                    <svg class="small-icon" viewBox="0 0 24 24" fill="none">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20"
+                                                stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </g>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tr-margin" style="text-align: left;">다양한 자격증의 기출문제를 풀어보고 해설을 확인하세요</td>
+                            </tr>
+                            <tr>
+                                <td><a class="normal-button" href="./mock-test.html">모의고사 응시</a></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr class="text-margin">
+                                <td class="tr-margin" style="text-align: left;">
+                                    시험 팁
+                                    <svg class="small-icon" viewBox="0 0 24 24" fill="none">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path
+                                                d="M12 7C9.23858 7 7 9.23858 7 12C7 13.3613 7.54402 14.5955 8.42651 15.4972C8.77025 15.8484 9.05281 16.2663 9.14923 16.7482L9.67833 19.3924C9.86537 20.3272 10.6862 21 11.6395 21H12.3605C13.3138 21 14.1346 20.3272 14.3217 19.3924L14.8508 16.7482C14.9472 16.2663 15.2297 15.8484 15.5735 15.4972C16.456 14.5955 17 13.3613 17 12C17 9.23858 14.7614 7 12 7Z"
+                                                stroke="#ffffff" stroke-width="2" />
+                                            <path d="M12 4V3" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M18 6L19 5" stroke="#ffffff" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M20 12H21" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M4 12H3" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M5 5L6 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 17H14" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </g>
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr class="text-margin">
+                                <td class="tr-margin" style="text-align: left;">다양한 자격증의 기출문제를 풀어보고 해설을 확인하세요</td>
+                            </tr>
+                            <tr>
+                                <td><a class="normal-button" href="./tips.html">시험팁 보기</a></td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+<!--푸터-->
+<footer>
+<div>이용문의 minseo00515@naver.com</div>
+</footer>
+</body>
+
+</html>
