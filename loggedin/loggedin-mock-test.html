@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모의고사</title>
+    <style>
+        body {
+            background: #030816;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+        
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 800px;
+            border: solid 2px #141C2C;
+            border-radius: 25px;
+        }
+
+        .capsule_green {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+            margin-bottom: 10px;
+        }
+
+        .capsule_blue {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+            margin-bottom: 10px;
+        }
+
+        .capsule_gray {
+            float: right;
+            width: 50%;
+            padding: 5px;
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+            margin-bottom: 10px;
+
+        }
+        .capsule_white {
+            float: left;
+            width: fit-content;
+            padding: 3px;
+            padding-left: 7px;
+            padding-right: 7px;
+            margin: 5px;
+            background-color: white;
+            border-radius: 25px;
+            color: #202A38;
+            margin-bottom: 10px;
+            font-size: 13px;
+
+        }
+     
+        .inline {
+            display: flex;
+        }
+
+        .morebtn {
+            font-size: 15px;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-top: 10px;
+            margin-bottom: 10px;            
+            border-radius: 7px;
+            width: max-content;
+            padding: 10px;
+            border: solid 0px #141C2C;
+            /* background-color: #030816;  */ /* 클릭 후 버튼색 */
+            background-color: #202A38; /* 클릭 전 버튼색 */
+            color: white;
+            cursor: pointer;
+        }
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 20px;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: 500px;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+            
+        }
+
+        .tr-margin {
+            padding-bottom: 15px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+        .test-icons {
+            float: left;
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .left-align {
+            text-align: left;
+            /* padding: 30px; */
+            padding-left: 30px;
+            padding-top: 30px;
+        }
+
+        #big-title {
+            font-size: xx-large;
+        }
+
+        .select-desc {
+            text-align: left;
+            margin-left: 10px;
+            font-size: medium;
+            margin-bottom: 10px;
+        }
+
+        .tapable-table {
+            cursor: pointer;
+        }
+        .test-title {
+            text-align: left;
+            font-size: x-large;
+            padding-bottom: 10px;
+            white-space: nowrap; 
+        }
+        .question-count {
+            margin-left: 10px;
+            text-align: left;
+            justify-content: space-between;
+            padding-bottom: 5px;
+            white-space: nowrap; 
+        }
+        .test-time {
+            /* margin-right: 10px; */
+            padding-bottom: 5px;
+            white-space: nowrap; 
+            text-align: right;
+            float: right;
+
+        }
+
+        .test-count {
+            margin-left: 10px;
+            text-align: left;
+            /* justify-content: space-between; */
+            padding-bottom: 5px;
+            white-space: nowrap; 
+
+        }
+        .get-test {
+            padding: 7px;
+            text-align: center;
+            border: solid 1px white;
+            background-color: white;
+            color: #030816;
+            border-radius: 10px;
+        }
+        .content-margin {
+        margin-top: 15px;
+        }
+        .set-margin {
+            margin-right: 10px;
+        }
+        .list-title {
+            font-size: larger;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        .list-num {
+            list-style-type: decimal;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .info-title {
+            font-size: x-large;
+            padding-bottom: 10px;
+        }
+        .info-desc {
+            font-size: medium;
+            padding-bottom: 10px;
+        }
+        .list-dot {
+            list-style-type: disc;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .search-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 500px;
+            margin-bottom: 25px;
+        }
+        .inline-categories {
+            border-radius: 10px;
+            background-color: #202A38;
+            width: fit-content;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+             <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+    <!--Header End-->
+    <!--메인 시작-->
+    <main>
+        <section>
+            <div class="left-align">
+                <div id="big-title">모의고사</div>
+                <h3>실제 시험과 동일한 환경에서 모의고사를 응시하고 실력을 점검하세요</h3>
+            </div>
+            <div class="ver_center"> <div class="search-center">
+                <input type="text" placeholder="자격증 또는 기출문제 검색...">
+                <img src="../img/searchIcon.png">
+            </div>
+            </div>
+
+            <div class="ver_center">
+                <div class="inline-categories"> <button type="button" onclick="location.href='#'"
+                    class="morebtn">전체</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">어학</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">공무원</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">IT</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">농업</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">검정고시</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">보건</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">행정</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">경제</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">요양</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">IT</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">식음료</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">생활건강</button>
+                    </div>
+               <ul class="table-wrapper">
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white">
+                                    정보처리기사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>정보처리기사 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 100문항</td>
+                                <td class="test-time"><div class="set-margin">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 150분</div></td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    SQLD
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>SQLD 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 50문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 90분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 213명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    한식 조리기능사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>한식 조리기능사 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 60문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 60분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,113명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    리눅스마스터 2급
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>리눅스마스터 2급 1차 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 50문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 60분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="./loggedin-testing.html">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    조경기능사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>조경기능사 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 60문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 60분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 3,633명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    고졸검정고시
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>고졸검정고시 영어 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 25문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 40분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    한국사능력검정시험
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>한국사능력검정시험 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 50문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 80분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 4,128명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    세계사능력검정시험
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>세계사능력검정시험 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 50문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 80분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    TOEIC
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>TOEIC RC 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 100문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 75분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 4,663명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    정보처리기사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>정보처리기사 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 100문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 150분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    정보처리기사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>정보처리기사 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 100문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 150분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table">
+                            <tr>
+                                <td class="capsule_white" >
+                                    정보처리기사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2"><div>정보처리기사 필기 모의고사</div></td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                <td class="question-count">
+                                    <svg class="test-icons" viewBox="-0.5 0 25 25" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M18.505 22H5.495C5.225 22 4.995 21.78 4.995 21.5V3.5C4.995 3.23 5.215 3 5.495 3H18.505C18.775 3 19.005 3.22 19.005 3.5V21.51C18.995 21.78 18.775 22 18.505 22Z" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M12.995 19H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 10H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 12H14.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 8H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 6H15.995" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> <path d="M7.995 14H13.425" stroke="#ffffff" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+문항 수: 100문항</td>
+                                <td class="test-time">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+</svg>
+                                    시험시간: 150분</td>
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="test-count">
+                                    <svg class="test-icons" viewBox="0 0 24 24" fill="none">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="SVGRepo_iconCarrier"> <path d="M15.9201 12.8959L19.2583 8.89003C19.533 8.5604 19.6704 8.39557 19.7681 8.21065C19.8548 8.0466 19.9183 7.87128 19.9567 7.68973C20 7.48508 20 7.27053 20 6.84144V6.2C20 5.07989 20 4.51984 19.782 4.09202C19.5903 3.71569 19.2843 3.40973 18.908 3.21799C18.4802 3 17.9201 3 16.8 3H7.2C6.0799 3 5.51984 3 5.09202 3.21799C4.71569 3.40973 4.40973 3.71569 4.21799 4.09202C4 4.51984 4 5.07989 4 6.2V6.84144C4 7.27053 4 7.48508 4.04328 7.68973C4.08168 7.87128 4.14515 8.0466 4.23188 8.21065C4.32964 8.39557 4.467 8.5604 4.74169 8.89003L8.07995 12.8959M13.4009 11.1989L19.3668 3.53988M10.5991 11.1989L4.6394 3.53414M6.55673 6H17.4505M17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 13.2386 9.23858 11 12 11C14.7614 11 17 13.2386 17 16Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/> </g>
+</svg>
+응시자 수: 1,243명</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><div class="content-margin"><a class="get-test" href="#">모의고사 응시 &#8594;</a></div></td>
+                            </tr>
+                        </table>
+                    </li>
+                   
+                </ul>
+                
+            </div>
+            <div class="left-align">
+             <div class="info-title">모의고사 응시 안내</div>
+             <div class="info-desc">모의고사는 실제 시험과 유사한 환경에서 진행되며, 시험 종료 후 즉시 채점 결과와 해설을 확인할 수 있습니다. 여러 번 응시하여 실력을 향상시키고 자신의 약점을 파악하세요.</div>
+                
+                <div>
+                <div class="list-title">모의고사 응시 방법</div>
+                <ul>
+                    <li class="list-num">원하는 모의고사 선택</li>
+                    <li class="list-num">'모의고사 응시하기' 버튼 클릭</li>
+                    <li class="list-num">시험 시작 전 안내사항 확인</li>
+                    <li class="list-num">제한 시간 내에 문제 풀이</li>
+                    <li class="list-num">모든 문제 풀이 후 '제출' 버튼 클릭</li>
+                    <li class="list-num">채점 결과 및 해설 확인</li>
+                </ul>
+                <div class="list-title">모의고사 유의사항</div>
+                <ul>
+                    <li class="list-dot">모의고사는 제한 시간이 종료되면 자동으로 제출됩니다.</li>
+                    <li class="list-dot">응시 중 페이지를 새로고침하거나 나가면 작성 중인 답안이 저장되지 않을 수 있습니다.</li>
+                    <li class="list-dot">모의고사 결과는 마이페이지에서 확인할 수 있습니다.</li>
+                </ul>
+                </div>
+                </div>
+        </section>
+        
+    </main>
+    <footer class="ver_center">
+<div>이용문의 minseo00515@naver.com</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.morebtn');
+
+    // 1. 초기 강조: "전체" 버튼 찾기 (텍스트 기준 또는 ID 부여)
+    const defaultButton = Array.from(buttons).find(btn => btn.textContent.trim() === '전체');
+    if (defaultButton) {
+        defaultButton.style.backgroundColor = '#030816'; // 강조 배경색
+        defaultButton.style.color = 'white';
+    }
+
+    // 2. 클릭 이벤트 설정
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 모든 버튼 초기화
+            buttons.forEach(btn => {
+                btn.style.backgroundColor = '#202A38';
+                btn.style.color = 'white';
+            });
+
+            // 클릭된 버튼 강조
+            button.style.backgroundColor = '#030816';
+            button.style.color = 'white';
+        });
+    });
+});
+</script>
+</body>
+
+</html>

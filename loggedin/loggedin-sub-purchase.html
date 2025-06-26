@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>구독 결제</title>
+  <style>
+    .payment-box { max-width: 600px; background: white; padding: 30px; border-radius: 10px; color: #030816; margin: 50px auto;}
+    .payment-box h2 { margin-bottom: 20px; }
+    .payment-box label { display: block; margin-top: 15px; margin-bottom: 5px; font-weight: bold; }
+    .payment-box input, select { width: 100%; padding: 10px; margin-bottom: 15px; }
+    .payment-box button { width: 100%; padding: 12px; background: #ff5722; color: #fff; border: none; border-radius: 5px; }
+    body {
+            /* background: #030816; */
+            /* color: white; */
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+        
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 800px;
+            border: solid 2px #141C2C;
+            border-radius: 25px;
+        }
+
+        .capsule_green {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+            margin-bottom: 10px;
+        }
+
+        .capsule_blue {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+            margin-bottom: 10px;
+        }
+
+        .capsule_gray {
+            float: right;
+            width: 50%;
+            padding: 5px;
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+            margin-bottom: 10px;
+
+        }
+        .capsule_white {
+            float: left;
+            width: fit-content;
+            padding: 3px;
+            padding-left: 7px;
+            padding-right: 7px;
+            margin: 5px;
+            background-color: white;
+            border-radius: 25px;
+            color: #202A38;
+            margin-bottom: 10px;
+            font-size: 13px;
+
+        }
+     
+        .inline {
+            display: flex;
+        }
+
+        .morebtn {
+            font-size: 15px;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-top: 10px;
+            margin-bottom: 10px;            
+            border-radius: 7px;
+            width: max-content;
+            padding: 10px;
+            border: solid 0px #141C2C;
+            /* background-color: #030816;  */ /* 클릭 후 버튼색 */
+            background-color: #202A38; /* 클릭 전 버튼색 */
+            color: white;
+            cursor: pointer;
+        }
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 20px;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: 500px;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+            
+        }
+
+        .tr-margin {
+            padding-bottom: 15px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+        .test-icons {
+            float: left;
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .left-align {
+            text-align: left;
+            /* padding: 30px; */
+            padding-left: 30px;
+            padding-top: 30px;
+        }
+
+        #big-title {
+            font-size: xx-large;
+        }
+
+        .select-desc {
+            text-align: left;
+            margin-left: 10px;
+            font-size: medium;
+            margin-bottom: 10px;
+        }
+
+        .tapable-table {
+            cursor: pointer;
+        }
+        .test-title {
+            text-align: left;
+            font-size: x-large;
+            padding-bottom: 10px;
+            white-space: nowrap; 
+        }
+        .question-count {
+            margin-left: 10px;
+            text-align: left;
+            justify-content: space-between;
+            padding-bottom: 5px;
+            white-space: nowrap; 
+        }
+        .test-time {
+            /* margin-right: 10px; */
+            padding-bottom: 5px;
+            white-space: nowrap; 
+            text-align: right;
+            float: right;
+
+        }
+
+        .test-count {
+            margin-left: 10px;
+            text-align: left;
+            /* justify-content: space-between; */
+            padding-bottom: 5px;
+            white-space: nowrap; 
+
+        }
+        .get-test {
+            padding: 7px;
+            text-align: center;
+            border: solid 1px white;
+            background-color: white;
+            color: #030816;
+            border-radius: 10px;
+        }
+        .content-margin {
+        margin-top: 15px;
+        }
+        .set-margin {
+            margin-right: 10px;
+        }
+        .list-title {
+            font-size: larger;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        .list-num {
+            list-style-type: decimal;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .info-title {
+            font-size: x-large;
+            padding-bottom: 10px;
+        }
+        .info-desc {
+            font-size: medium;
+            padding-bottom: 10px;
+        }
+        .list-dot {
+            list-style-type: disc;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .search-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 500px;
+            margin-bottom: 25px;
+        }
+        .inline-categories {
+            border-radius: 10px;
+            background-color: #202A38;
+            width: fit-content;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+  </style>
+</head>
+<body>
+  <div class="payment-box">
+    <h2>구독 요금 결제</h2>
+    <label>카드번호</label>
+  <input type="text" id="card" maxlength="19" placeholder="1234 •••• •••• 3456" inputmode="numeric" autocomplete="cc-number">
+    
+    <label>유효기간</label>
+  <input type="text" id="expiry" maxlength="5" placeholder="MM/YY">
+    
+    <label>CVV</label>
+    <input type="number" placeholder="123">
+    
+    <label>구독 요금제</label>
+    <select>
+      <option>Standard - 월 9,900원</option>
+      <option>Premium - 월 19,900원</option>
+    </select>
+
+    <button>결제하기</button>
+  </div>
+
+<script src="./payment.js"></script>
+</body>
+</html>

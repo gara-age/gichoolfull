@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구독</title>
+    <style>
+   body {
+            background: #030816;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 800px;
+            border: solid 2px #141C2C;
+            border-radius: 25px;
+        }
+
+        /* td {
+        border: solid 1px white;
+} */
+        .capsule_green {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+            margin-bottom: 10px;
+        }
+
+        .capsule_blue {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+            margin-bottom: 10px;
+        }
+
+        .capsule_gray {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+            margin-bottom: 10px;
+
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .morebtn {
+            font-size: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            width: max-content;
+            padding: 5px;
+            border: solid 2px #141C2C;
+            background-color: #030816;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 20px;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: 270px;
+            height: 350px;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+        }
+        .recommend-multi-table {
+            padding: 0;
+            width: 300px;
+            height: 380px;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+        }
+        .tr-margin {
+        padding-bottom: 15px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+        footer {
+            background-color: #030816;
+            height: 50px;
+        }
+        footer div {
+            text-align: center;
+            padding: 10px;
+        
+        }
+        .normal-button {
+            /* background-color: white; */
+            /* color: #030816; */
+            color: white;
+            border: solid 1px #bbb;
+            border-radius: 5px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-bottom: 15px;
+        }
+        #big-title {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+        #sub-title {
+            padding-top: 5px;
+            margin-bottom: 10px;
+        }
+        #recommend {
+            border: solid 1px white;
+        }
+        .recommend-desc {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .disrecommend-button {
+            background-color: #030816; 
+            color: white;
+            border: solid 2px #141C2C; 
+            font-weight: bold; 
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+        .sub-button {
+            background-color: #141C2C; 
+            color: white;
+            border: solid 2px #141C2C; 
+            font-weight: bold; 
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+        .question-title {
+            text-align: left;
+        }
+        .question-answer {
+            text-align: left;
+            font-size: medium;
+        }
+        .info-title {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+     <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+            <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+     <main>
+        <section>
+            
+            <div class="ver_center">
+                <div id="big-title" style="padding-top: 10px;">현재 구독 플랜</div>
+            </div>
+             <ul class="table-wrapper">
+                    <li>
+                       <table class="multi-table">
+                    <tr>
+                        <td style="float: left;">
+                            <div>무료 플랜</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="float: left;">
+                            <h1>무료</h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; 모의고사 월 3회 무료 이용</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; 시험 일정 확인</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; 시험팁 확인</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; 기출문제 무제한 이용</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; padding-top: 20px;">
+                                <button class="disrecommend-button" >요금제 변경하기</button>
+                              </td>
+                    </tr>
+                </table>
+                    </li>
+
+
+                    <li>
+                        <table id="recommend" class="recommend-multi-table">
+                            <tr>
+                              <td colspan="2" style="text-align: center; background-color: white; color: #030816; padding: 5px; border-radius: 8px 8px 0 0;">
+                                현재 이용중인 플랜
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="text-align: center; padding: 10px;">
+                                <div style="font-size: large; font-weight: bold;">스탠다드 플랜</div>
+                              </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: center; padding: 0; ">
+                                <div style="font-size: xx-large; font-weight: bold;">9,900원<span style="font-size: large; font-weight: normal;">/월</span></div>
+                              </td>
+                            </tr>
+                            <tr><td class="recommend-desc" style="text-align: left;">&#9989; 무료플랜의 모든 기능</td></tr>
+                            <tr><td class="recommend-desc" style="text-align: left;">&#9989; 모의고사 주3회 제공</td></tr>
+                            <tr><td class="recommend-desc" style="text-align: left;">&#9989; 오답노트 자동 생성</td></tr>
+                            <tr><td class="recommend-desc" style="text-align: left;">&#9989; 학습 진도 관리</td></tr>
+                            <tr><td class="recommend-desc" style="text-align: left;">&#9989; 광고 제거</td></tr>
+                            <tr>
+                              <td style="text-align: center; padding-top: 20px;">
+                                <button class="sub-button" onClick="openIframeModal()" style="cursor: pointer;">해지하기</button>
+                            </td>
+                            </tr>
+                        </table>
+                    </li>
+                   <li>
+                       <table class="multi-table">
+                    <tr>
+                        <td style="float: left;">
+                            <div>프리미엄 플랜</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="float: left; margin-top: 10px; margin-bottom: 10px;" >
+                                <div style="font-size: x-large; font-weight: bold;">19,900원<span style="font-size: large; font-weight: normal;">/월</span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; 스탠다드 플랜의 모든 기능</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; 모의고사 무제한 이용</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; font-size: 15px;">&#9989; AI 질의응답 서비스 무제한 이용</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left;">&#9989; AI 학습 관리</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; padding-top: 20px;">
+                                <button class="normal-button" 
+    onClick="openIframeModal()"
+    style="background-color: white; color: black; font-weight: bold; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;">
+    요금제 변경하기
+</button> 
+                              </td>
+                    </tr>
+                </table>
+                    </li>
+                    </ul>
+                    <div class="ver_center">
+             <div class="info-title">자주 묻는 질문</div>                
+                <div>
+                <div class="question-title">구독은 언제든지 취소할 수 있나요?</div>
+                <ul>
+                    <li class="question-answer">네, 언제든지 구독을 취소할 수 있습니다. 취소 시 다음 결제일부터 요금이 청구되지 않으며, 취소한 날짜까지의 서비스는 정상적으로 이용 가능합니다.</li>
+                </ul>
+                <div class="question-title">결제 방법은 어떻게 되나요?</div>
+                <ul>
+                    <li class="question-answer">신용카드, 체크카드, 계좌이체, 휴대폰 소액결제 등 다양한 결제 방법을 지원합니다. 결제는 매월 구독 시작일에 자동으로 이루어집니다.</li>
+                </ul>
+                <div class="question-title">구독 플랜을 변경할 수 있나요?</div>
+                <ul>
+                    <li class="question-answer">네, 언제든지 마이페이지에서 구독 플랜을 변경할 수 있습니다. 상위 플랜으로 업그레이드 시 즉시 적용되며, 하위 플랜으로 변경 시 다음 결제일부터 적용됩니다.</li>
+                </ul>
+                <div class="question-title">환불 정책은 어떻게 되나요?</div>
+                <ul>
+                    <li class="question-answer">구독 시작 후 7일 이내에 서비스에 불만족하시는 경우 전액 환불해 드립니다. 7일 이후에는 남은 기간에 대한 부분 환불이 가능합니다. 자세한 내용은 고객센터로 문의해 주세요.</li>
+                </ul>
+                </div>
+                </div>
+            </section>
+            </main>
+<!-- 모달 배경 -->
+<div id="modal-overlay" style="
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 1000;"></div>
+
+<!-- 모달 본문 -->
+<div id="modal-iframe" style="
+    display: none; 
+    position: fixed; 
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 800px; height: 70%; 
+    background: white; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    z-index: 1001; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+
+    <!-- 닫기 버튼 -->
+    <div style="text-align: right; padding: 10px; background-color: #f0f0f0;">
+        <button onclick="closeIframeModal()" style="
+            background: none; 
+            border: none; 
+            font-size: 20px; 
+            cursor: pointer;">✕</button>
+    </div>
+
+    <!-- iframe 본문 -->
+    <iframe id="subscription-frame" src="" style="width: 100%; height: calc(100% - 40px); border: none;"></iframe>
+</div>
+  <script src="./script.js"></script>
+</body>
+</html>

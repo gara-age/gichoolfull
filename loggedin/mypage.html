@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <style>
+        body {
+            background: #030816;
+            color: white;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+        .nav-left, .nav-center, .nav-right {
+            display: flex;
+            align-items: center;
+        }
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #nav_item li {
+            margin: 0 10px;
+        }
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .search {
+         position: relative;
+         width: 300px;
+        }
+        input {
+        width: 100%;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        padding: 10px 12px;
+        font-size: 14px;
+        background-color: #101232;
+        color: white;
+        }
+        img {
+        position : absolute;
+        width: 17px;
+        top: 10px;
+        right: 12px;
+        margin: 0;
+        }
+        
+        .center {
+            height: 500px;
+            background-color: #152238;
+                        display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+  .image-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* 원하는 크기로 조정 */
+  
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-10%);
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  padding: 20px;
+  border-radius: 8px;
+  width: 350%;
+  height: 520px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay h2 {
+  margin: 0 0 10px;
+}
+
+.overlay button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btndiv {
+    display: inline;
+}
+.ver_center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    margin-top: 20px;
+    padding: 10px;
+    width: 800px;
+    border: solid 2px #141C2C;
+    border-radius: 25px;
+}
+/* td {
+        border: solid 1px white;
+} */
+.capsule_green {
+    margin: 5px;
+    width:auto;
+    padding: 5px;
+    background-color:  green;
+    border-radius: 25px;
+    color: #74D698;
+}
+
+.capsule_blue {
+    margin: 10px;
+    width:auto;
+    padding: 5px;
+    /* padding-left: 5px; */
+    /* padding-right: 5px; */
+    background-color: #1F3A8A;
+    border-radius: 25px;
+    color: #91C2F8;
+}
+.capsule_gray {
+    margin: 5px;
+    background-color: #202A38;
+    border-radius: 25px; 
+    color: #B3B8C0;
+}
+
+.inline {
+    display: inline;
+}
+.morebtn {
+    border-radius: 5px;
+}
+.mypage-section {
+    /* padding-left: 150px; */
+    margin-top: 50px auto;
+    padding-top: 30px;
+    border-top: 1px solid #666;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.mypage-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.mypage-section label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.mypage-input {
+    width: 30%;
+    height: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #101232;
+    color: white;
+    resize: none;
+}
+
+.mypage-button {
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    background-color: #1F3A8A;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.mypage-delete-button {
+    padding: 10px 20px;
+    background-color: #8B0000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin: 30px 200px 10px 0;
+}
+.mypage-save-button {
+    float: right;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 30px 20px 20px 0;
+    margin-top: 30px;
+}
+.mypage-cancel-button {
+    float: right;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin: 30px 20px 20px 0;
+}
+    </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+             <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+    <main>
+       <div class="mypage-section">
+    <h3>마이페이지</h3>
+    
+    <label for="nickname">닉네임 수정</label>
+    <input id="nickname" class="mypage-input" placeholder="새 닉네임을 입력하세요...">
+
+    <label for="password">비밀번호 수정</label>
+    <input type="password" id="password" class="mypage-input" placeholder="새 비밀번호를 입력하세요...">
+
+    <label for="password-confirm">비밀번호 확인</label>
+    <input type="password" id="password-confirm" class="mypage-input" placeholder="비밀번호를 다시 입력하세요...">
+    
+    <div>
+    <button class="mypage-delete-button">회원 탈퇴</button>
+    <button class="mypage-cancel-button" onclick="location.href='./loggedin-main.html'">취소</button>
+    <button class="mypage-save-button">저장</button>
+
+  </div>
+  </div>
+    </main>
+</body>
+</html>

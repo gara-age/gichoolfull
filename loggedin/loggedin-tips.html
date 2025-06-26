@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험팁</title>
+    <style>
+        body {
+            background: #030816;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 1000px;
+            border: solid 2px #141C2C;
+            border-radius: 10px;
+        }
+
+        .capsule_green {
+            margin: 5px;
+            width: auto;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+        }
+
+        .capsule_blue {
+            margin: 10px;
+            width: auto;
+            padding: 5px;
+            /* padding-left: 5px; */
+            /* padding-right: 5px; */
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+        }
+
+        .capsule_gray {
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .morebtn {
+            border-radius: 5px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+
+        .small-icons {
+            float: left;
+            width: 17px;
+            margin-right: 3px;
+        }
+
+        .left-align {
+            text-align: left;
+            /* padding: 30px; */
+            padding-left: 30px;
+            padding-top: 30px;
+        }
+
+        #big-title {
+            font-size: xx-large;
+        }
+
+        .test-title {
+            text-align: left;
+            font-size: x-large;
+            padding-bottom: 10px;
+            white-space: nowrap;
+        }
+
+        .tip-title {
+            margin-left: 10px;
+            text-align: left;
+            justify-content: space-between;
+            padding-bottom: 5px;
+            white-space: nowrap;
+        }
+
+        .test-time {
+            /* margin-right: 10px; */
+            padding-bottom: 5px;
+            white-space: nowrap;
+            text-align: right;
+            float: right;
+
+        }
+
+        .capsule_white {
+            float: left;
+            width: fit-content;
+            padding: 3px;
+            padding-left: 7px;
+            padding-right: 7px;
+            margin: 5px;
+            background-color: white;
+            border-radius: 25px;
+            color: #202A38;
+            margin-bottom: 10px;
+            font-size: 13px;
+
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 20px;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .pri-content {
+            text-align: left;
+        }
+
+        .count {
+            text-align: left;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .item-sort {
+            text-align: left;
+            align-items: center;
+            display: flex;
+        }
+
+        .date {
+            text-align: right;
+            padding-right: 5px;
+            padding-top: 5px;
+            font-size: 15px;
+        }
+
+        .calendar {
+            width: 17px;
+            text-align: right;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: 700px;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .list-title {
+            font-size: larger;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        .write-tip {
+            text-decoration: underline;
+            font-size: larger;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        .list-num {
+            list-style-type: decimal;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .info-title {
+            font-size: x-large;
+            padding-bottom: 10px;
+        }
+        .info-desc {
+            font-size: medium;
+            padding-bottom: 10px;
+        }
+        .list-dot {
+            list-style-type: disc;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+             <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+    <main>
+        <section>
+            <div class="left-align">
+                <div id="big-title">시험팁</div>
+                <h3>합격자들이 공유하는 시험 준비 팁과 노하우를 확인하세요</h3>
+            </div>
+            <div class="ver_center">
+                <div style="text-align: left; float: left; font-weight: bolder; font-size: xx-large;">인기글</div>
+                <ul class="table-wrapper">
+                    <li>
+                        <table class="multi-table" onClick="location.href='#'">
+                            <tr>
+                                <td>
+                                    <div class="capsule_white">
+                                        정보처리기사
+                                    </div>
+                                    <div class="date">
+                                        <svg class="calendar" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                        2024년 05월 28일
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2">
+                                    <div>정보처리기사 필기 합격 노하우</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                    <td class="tip-title">
+                                        <svg class="small-icons" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>profile [#1336]</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <defs> </defs>
+                                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
+                                                    <g id="Dribbble-Light-Preview"
+                                                        transform="translate(-380.000000, -2159.000000)" fill="#ffffff">
+                                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                            <path
+                                                                d="M334,2011 C337.785,2011 340.958,2013.214 341.784,2017 L326.216,2017 C327.042,2013.214 330.215,2011 334,2011 M330,2005 C330,2002.794 331.794,2001 334,2001 C336.206,2001 338,2002.794 338,2005 C338,2007.206 336.206,2009 334,2009 C331.794,2009 330,2007.206 330,2005 M337.758,2009.673 C339.124,2008.574 340,2006.89 340,2005 C340,2001.686 337.314,1999 334,1999 C330.686,1999 328,2001.686 328,2005 C328,2006.89 328.876,2008.574 330.242,2009.673 C326.583,2011.048 324,2014.445 324,2019 L344,2019 C344,2014.445 341.417,2011.048 337.758,2009.673"
+                                                                id="profile-[#1336]"> </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>김철수
+                                    </td>
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="pri-content">
+                                    <br></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 10C3 9.44772 3.44772 9 4 9H7V21H4C3.44772 21 3 20.5523 3 20V10Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7 11V19L8.9923 20.3282C9.64937 20.7662 10.4214 21 11.2111 21H16.4586C17.9251 21 19.1767 19.9398 19.4178 18.4932L20.6119 11.3288C20.815 10.1097 19.875 9 18.6391 9H14"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M14 9L14.6872 5.56415C14.8659 4.67057 14.3512 3.78375 13.4867 3.49558V3.49558C12.6336 3.21122 11.7013 3.59741 11.2992 4.4017L8 11H7"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">263</div>
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">25</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table" onClick="location.href='./loggedin-read-tips.html'">
+                            <tr>
+                                <td>
+                                    <div class="capsule_white">
+                                        SQLD
+                                    </div>
+                                    <div class="date">
+                                        <svg class="calendar" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                        2024년 05월 28일
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2">
+                                    <div>SQLD 합격 방법</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                    <td class="tip-title">
+                                        <svg class="small-icons" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>profile [#1336]</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <defs> </defs>
+                                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
+                                                    <g id="Dribbble-Light-Preview"
+                                                        transform="translate(-380.000000, -2159.000000)" fill="#ffffff">
+                                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                            <path
+                                                                d="M334,2011 C337.785,2011 340.958,2013.214 341.784,2017 L326.216,2017 C327.042,2013.214 330.215,2011 334,2011 M330,2005 C330,2002.794 331.794,2001 334,2001 C336.206,2001 338,2002.794 338,2005 C338,2007.206 336.206,2009 334,2009 C331.794,2009 330,2007.206 330,2005 M337.758,2009.673 C339.124,2008.574 340,2006.89 340,2005 C340,2001.686 337.314,1999 334,1999 C330.686,1999 328,2001.686 328,2005 C328,2006.89 328.876,2008.574 330.242,2009.673 C326.583,2011.048 324,2014.445 324,2019 L344,2019 C344,2014.445 341.417,2011.048 337.758,2009.673"
+                                                                id="profile-[#1336]"> </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>홍성표
+                                    </td>
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="pri-content">
+                                    <br></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 10C3 9.44772 3.44772 9 4 9H7V21H4C3.44772 21 3 20.5523 3 20V10Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7 11V19L8.9923 20.3282C9.64937 20.7662 10.4214 21 11.2111 21H16.4586C17.9251 21 19.1767 19.9398 19.4178 18.4932L20.6119 11.3288C20.815 10.1097 19.875 9 18.6391 9H14"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M14 9L14.6872 5.56415C14.8659 4.67057 14.3512 3.78375 13.4867 3.49558V3.49558C12.6336 3.21122 11.7013 3.59741 11.2992 4.4017L8 11H7"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">35</div>
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">2</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table" onClick="location.href='#'">
+                            <tr>
+                                <td>
+                                    <div class="capsule_white">
+                                        리눅스마스터 2급
+                                    </div>
+                                    <div class="date">
+                                        <svg class="calendar" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                        2024년 05월 28일
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2">
+                                    <div>리눅스마스터 2급 합격 1차 개꿀팁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                    <td class="tip-title">
+                                        <svg class="small-icons" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>profile [#1336]</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <defs> </defs>
+                                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
+                                                    <g id="Dribbble-Light-Preview"
+                                                        transform="translate(-380.000000, -2159.000000)" fill="#ffffff">
+                                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                            <path
+                                                                d="M334,2011 C337.785,2011 340.958,2013.214 341.784,2017 L326.216,2017 C327.042,2013.214 330.215,2011 334,2011 M330,2005 C330,2002.794 331.794,2001 334,2001 C336.206,2001 338,2002.794 338,2005 C338,2007.206 336.206,2009 334,2009 C331.794,2009 330,2007.206 330,2005 M337.758,2009.673 C339.124,2008.574 340,2006.89 340,2005 C340,2001.686 337.314,1999 334,1999 C330.686,1999 328,2001.686 328,2005 C328,2006.89 328.876,2008.574 330.242,2009.673 C326.583,2011.048 324,2014.445 324,2019 L344,2019 C344,2014.445 341.417,2011.048 337.758,2009.673"
+                                                                id="profile-[#1336]"> </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>전남길
+                                    </td>
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="pri-content">
+                                    <br></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 10C3 9.44772 3.44772 9 4 9H7V21H4C3.44772 21 3 20.5523 3 20V10Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7 11V19L8.9923 20.3282C9.64937 20.7662 10.4214 21 11.2111 21H16.4586C17.9251 21 19.1767 19.9398 19.4178 18.4932L20.6119 11.3288C20.815 10.1097 19.875 9 18.6391 9H14"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M14 9L14.6872 5.56415C14.8659 4.67057 14.3512 3.78375 13.4867 3.49558V3.49558C12.6336 3.21122 11.7013 3.59741 11.2992 4.4017L8 11H7"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">98</div>
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">25</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table" onClick="location.href='#'">
+                            <tr>
+                                <td>
+                                    <div class="capsule_white">
+                                        양식조리기능사
+                                    </div>
+                                    <div class="date">
+                                        <svg class="calendar" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                        2024년 05월 28일
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2">
+                                    <div>양식조리기능사 실기 합격 꿀팁</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                    <td class="tip-title">
+                                        <svg class="small-icons" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>profile [#1336]</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <defs> </defs>
+                                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
+                                                    <g id="Dribbble-Light-Preview"
+                                                        transform="translate(-380.000000, -2159.000000)" fill="#ffffff">
+                                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                            <path
+                                                                d="M334,2011 C337.785,2011 340.958,2013.214 341.784,2017 L326.216,2017 C327.042,2013.214 330.215,2011 334,2011 M330,2005 C330,2002.794 331.794,2001 334,2001 C336.206,2001 338,2002.794 338,2005 C338,2007.206 336.206,2009 334,2009 C331.794,2009 330,2007.206 330,2005 M337.758,2009.673 C339.124,2008.574 340,2006.89 340,2005 C340,2001.686 337.314,1999 334,1999 C330.686,1999 328,2001.686 328,2005 C328,2006.89 328.876,2008.574 330.242,2009.673 C326.583,2011.048 324,2014.445 324,2019 L344,2019 C344,2014.445 341.417,2011.048 337.758,2009.673"
+                                                                id="profile-[#1336]"> </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>임채원
+                                    </td>
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="pri-content">
+                                    <br></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 10C3 9.44772 3.44772 9 4 9H7V21H4C3.44772 21 3 20.5523 3 20V10Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7 11V19L8.9923 20.3282C9.64937 20.7662 10.4214 21 11.2111 21H16.4586C17.9251 21 19.1767 19.9398 19.4178 18.4932L20.6119 11.3288C20.815 10.1097 19.875 9 18.6391 9H14"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M14 9L14.6872 5.56415C14.8659 4.67057 14.3512 3.78375 13.4867 3.49558V3.49558C12.6336 3.21122 11.7013 3.59741 11.2992 4.4017L8 11H7"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">37</div>
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">25</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table" onClick="location.href='#'">
+                            <tr>
+                                <td>
+                                    <div class="capsule_white">
+                                        정보처리산업기사
+                                    </div>
+                                    <div class="date">
+                                        <svg class="calendar" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                        2024년 05월 28일
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2">
+                                    <div>정처산기 독학 필승법</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                    <td class="tip-title">
+                                        <svg class="small-icons" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>profile [#1336]</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <defs> </defs>
+                                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
+                                                    <g id="Dribbble-Light-Preview"
+                                                        transform="translate(-380.000000, -2159.000000)" fill="#ffffff">
+                                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                            <path
+                                                                d="M334,2011 C337.785,2011 340.958,2013.214 341.784,2017 L326.216,2017 C327.042,2013.214 330.215,2011 334,2011 M330,2005 C330,2002.794 331.794,2001 334,2001 C336.206,2001 338,2002.794 338,2005 C338,2007.206 336.206,2009 334,2009 C331.794,2009 330,2007.206 330,2005 M337.758,2009.673 C339.124,2008.574 340,2006.89 340,2005 C340,2001.686 337.314,1999 334,1999 C330.686,1999 328,2001.686 328,2005 C328,2006.89 328.876,2008.574 330.242,2009.673 C326.583,2011.048 324,2014.445 324,2019 L344,2019 C344,2014.445 341.417,2011.048 337.758,2009.673"
+                                                                id="profile-[#1336]"> </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>김유노
+                                    </td>
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="pri-content">
+                                    <br></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 10C3 9.44772 3.44772 9 4 9H7V21H4C3.44772 21 3 20.5523 3 20V10Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7 11V19L8.9923 20.3282C9.64937 20.7662 10.4214 21 11.2111 21H16.4586C17.9251 21 19.1767 19.9398 19.4178 18.4932L20.6119 11.3288C20.815 10.1097 19.875 9 18.6391 9H14"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M14 9L14.6872 5.56415C14.8659 4.67057 14.3512 3.78375 13.4867 3.49558V3.49558C12.6336 3.21122 11.7013 3.59741 11.2992 4.4017L8 11H7"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">32</div>
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">25</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                    <li>
+                        <table class="multi-table" onClick="location.href='#'">
+                            <tr>
+                                <td>
+                                    <div class="capsule_white">
+                                        조경기능사
+                                    </div>
+                                    <div class="date">
+                                        <svg class="calendar" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+                                            </g>
+                                        </svg>
+                                        2024년 05월 28일
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="test-title" colspan="2">
+                                    <div>조경기능사 필기 합격, 실기 준비물</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <div class="test-content">
+                                    <td class="tip-title">
+                                        <svg class="small-icons" viewBox="0 0 20 20" version="1.1" fill="#ffffff">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <title>profile [#1336]</title>
+                                                <desc>Created with Sketch.</desc>
+                                                <defs> </defs>
+                                                <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+                                                    fill-rule="evenodd">
+                                                    <g id="Dribbble-Light-Preview"
+                                                        transform="translate(-380.000000, -2159.000000)" fill="#ffffff">
+                                                        <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                            <path
+                                                                d="M334,2011 C337.785,2011 340.958,2013.214 341.784,2017 L326.216,2017 C327.042,2013.214 330.215,2011 334,2011 M330,2005 C330,2002.794 331.794,2001 334,2001 C336.206,2001 338,2002.794 338,2005 C338,2007.206 336.206,2009 334,2009 C331.794,2009 330,2007.206 330,2005 M337.758,2009.673 C339.124,2008.574 340,2006.89 340,2005 C340,2001.686 337.314,1999 334,1999 C330.686,1999 328,2001.686 328,2005 C328,2006.89 328.876,2008.574 330.242,2009.673 C326.583,2011.048 324,2014.445 324,2019 L344,2019 C344,2014.445 341.417,2011.048 337.758,2009.673"
+                                                                id="profile-[#1336]"> </path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>박재홍
+                                    </td>
+
+                                </div>
+                            </tr>
+                            <tr>
+                                <td class="pri-content">
+                                    <br></td>
+                            </tr>
+                            <tr>
+
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 10C3 9.44772 3.44772 9 4 9H7V21H4C3.44772 21 3 20.5523 3 20V10Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M7 11V19L8.9923 20.3282C9.64937 20.7662 10.4214 21 11.2111 21H16.4586C17.9251 21 19.1767 19.9398 19.4178 18.4932L20.6119 11.3288C20.815 10.1097 19.875 9 18.6391 9H14"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M14 9L14.6872 5.56415C14.8659 4.67057 14.3512 3.78375 13.4867 3.49558V3.49558C12.6336 3.21122 11.7013 3.59741 11.2992 4.4017L8 11H7"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">80</div>
+                                        <svg class="small-icons" viewBox="0 0 24 24" fill="none">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path
+                                                    d="M3 7.2C3 6.07989 3 5.51984 3.21799 5.09202C3.40973 4.71569 3.71569 4.40973 4.09202 4.21799C4.51984 4 5.0799 4 6.2 4H17.8C18.9201 4 19.4802 4 19.908 4.21799C20.2843 4.40973 20.5903 4.71569 20.782 5.09202C21 5.51984 21 6.0799 21 7.2V20L17.6757 18.3378C17.4237 18.2118 17.2977 18.1488 17.1656 18.1044C17.0484 18.065 16.9277 18.0365 16.8052 18.0193C16.6672 18 16.5263 18 16.2446 18H6.2C5.07989 18 4.51984 18 4.09202 17.782C3.71569 17.5903 3.40973 17.2843 3.21799 16.908C3 16.4802 3 15.9201 3 14.8V7.2Z"
+                                                    stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                        </svg>
+                                        <div class="count">25</div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+            <div class="left-align">
+             <div class="info-title">시험 팁 작성 가이드</div>
+             <div class="info-desc">여러분의 소중한 경험과 노하우를 다른 수험생들과 공유해 주세요. 시험 준비 방법, 효과적인 학습 전략, 시험장에서의 유의사항 등 다양한 팁을 작성할 수 있습니다.</div>
+                
+                <div>
+                <div class="list-title">좋은 시험 팁 작성 방법</div>
+                <ul>
+                    <li class="list-num">구체적인 학습 방법과 전략을 공유해 주세요.</li>
+                    <li class="list-num">본인의 실제 경험을 바탕으로 작성해 주세요.</li>
+                    <li class="list-num">시험 과목별 중요도와 학습 순서를 제시해 주세요.</li>
+                    <li class="list-num">추천 참고 자료나 문제집이 있다면 함께 공유해 주세요.</li>
+                    <li class="list-num">시험장에서의 유의사항이나 시간 관리 방법도 도움이 됩니다.</li>
+                </ul>
+                <a href="./loggedin-write-tip.html" class="write-tip">시험 팁 작성하기</a>
+                </div>
+                </div>
+        </section>
+    </main>
+</body>
+
+</html>

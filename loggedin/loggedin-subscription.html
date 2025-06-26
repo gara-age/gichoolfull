@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>구독 정보</title>
+  <style>
+    body { font-family: sans-serif; background: #e9ecef; padding: 50px; }
+    .sub-info { max-width: 600px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; }
+    h2 { margin-bottom: 20px; }
+    .item { margin-bottom: 10px; }
+    .label { font-weight: bold; margin-right: 10px; }
+    .cancel-btn { margin-top: 20px; background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+             <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+  <div class="sub-info">
+    <h2>나의 구독 정보</h2>
+    <div class="item"><span class="label">구독 상품:</span>Pro 요금제</div>
+    <div class="item"><span class="label">시작일:</span>2025-06-01</div>
+    <div class="item"><span class="label">다음 결제일:</span>2025-07-01</div>
+    <div class="item"><span class="label">결제 수단:</span>신용카드</div>
+    <button class="cancel-btn">구독 해지하기</button>
+  </div>
+</body>
+</html>

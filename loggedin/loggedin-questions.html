@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자격증별 기출문제</title>
+    <style>
+        body {
+            background: #030816;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            margin-top: 20px;
+            padding: 10px;
+            width: 800px;
+            border: solid 2px #141C2C;
+            border-radius: 25px;
+        }
+        .capsule_gray {
+            float: right;
+            width: 30%;
+            padding: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            font-size: small;
+            color: white;
+
+        }
+
+        .inline {
+        display: flex;
+        align-items: center; /* 수직 정렬 */
+        gap: 10px;            /* 요소 사이 간격 */
+        justify-content: space-between;
+        
+        }
+
+        .morebtn {
+            font-size: 15px;
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-top: 10px;
+            margin-bottom: 10px;            
+            border-radius: 7px;
+            width: max-content;
+            padding: 10px;
+            border: solid 0px #141C2C;
+            /* background-color: #030816;  */ /* 클릭 후 버튼색 */
+            background-color: #202A38; /* 클릭 전 버튼색 */
+            color: white;
+            cursor: pointer;
+        }
+        
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: left;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+        .capsule-wrapper {
+            /* border: solid 1px white; */
+            display: inline;
+            justify-content: left;
+            flex-wrap: wrap;
+            list-style: none;
+  
+        }
+        .capsule {
+            vertical-align: middle;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 7px;
+            padding-right: 7px;
+            margin-top: 10px;
+            white-space: nowrap;
+            margin-left: 15px;
+            margin-right: 15px;
+            border: solid 1px #202A38;
+            background-color: #030816;
+            border-radius: 25px;
+            font-size: small;
+            color: white;
+            text-align: center;
+        }
+
+        .multi-table {
+            padding: 15px;
+            width: 250px;
+            height: 70px;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .multi-table td, tr {
+        height: 20px;
+        padding: 0; 
+        vertical-align: middle; 
+        }
+
+        .inline-table {
+        display: flex;
+        align-items: center; /* 수직 정렬 */
+        gap: 10px;            /* 요소 사이 간격 */
+        justify-content: space-between;
+        }
+        
+        .famous-table {
+            padding: 15px;
+            width: 300px;
+            height: fit-content;
+            background-color: #030816;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+        footer {
+            background-color: #030816;
+            height: 50px;
+        }
+        footer div {
+            text-align: center;
+            padding: 10px;
+        
+        }
+        .normal-button {
+            color: white;
+            border: solid 1px #bbb;
+            border-radius: 5px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .left-align {
+            text-align: left;
+            /* padding: 30px; */
+            padding-left: 30px;
+            padding-top: 30px;
+        }
+        #big-title {
+            font-size: xx-large;
+        }
+        .search-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 500px;
+            margin-bottom: 25px;
+        }
+        .inline-categories {
+            border-radius: 10px;
+            background-color: #202A38;
+            width: fit-content;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .semi-title {
+            font-size: 25px;
+            text-align: left;
+        }
+        .a-align {
+            text-align: right;
+        }
+        .question-shortcut {
+            margin-top: 30px;
+            width: 1300px;
+        }
+        .famous-questions {
+              margin-top: 30px;
+            width: 1300px;
+                padding-top: 15px;
+            /* text-align: center; */
+            display: flex;
+            /* padding-left: 175px; */
+            flex-direction: column;
+            /* align-items: left; */
+        }
+ 
+        
+        
+    </style>
+    
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+             <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+    <!--메인 시작-->
+    <main>
+        <section>
+            <div class="left-align">
+                <div id="big-title">자격증 기출문제</div>
+                <h3>다양한 자격증의 기출문제를 분야별로 확인하고 학습하세요</h3>
+            </div>
+            <div class="ver_center"> <div class="search-center">
+                <input type="text" placeholder="자격증 또는 기출문제 검색...">
+                <img src="../img/searchIcon.png">
+            </div>
+            </div>
+            <div class="ver_center">
+                <!--문제 카테고리-->
+                   <div class="inline-categories"> <button type="button" onclick="location.href='#'"
+                    class="morebtn">전체</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">어학</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">공무원</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">IT</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">농업</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">검정고시</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">보건</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">행정</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">경제</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">요양</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">IT</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">식음료</button>
+                    <button type="button" onclick="location.href='#'"
+                    class="morebtn">생활건강</button>
+                    </div>
+                    <!--문제 카테고리 끝-->
+                    <!--카테고리별 문제-->
+                    <div class="question-shortcut">
+                        <div class="inline">
+                        <div class="semi-title">어학</div>
+                        <a href="#">더 보기</a>
+                        </div>
+                        <div class="inline"> 
+                            <table class="multi-table" onclick="location.href='#'">
+                            <tr >
+                                <td  style="text-align: left;">
+                                    JLPT N1
+                                </td>
+                            </tr>
+                         
+                            <tr class="text-margin">
+                                <td><div class="capsule_gray">429문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    JLPT N2
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">280문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    JLPT N3
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">378문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    TOEIC
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">603문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    TOEFL
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">573문제</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="question-shortcut">
+                        <div class="inline">
+                        <div class="semi-title">공무원</div>
+                        <a href="#">더 보기</a>
+                        </div>
+                        <div class="inline"> 
+                            <table class="multi-table" onclick="location.href='#'">
+                            <tr >
+                                <td  style="text-align: left;">
+                                    한국사
+                                </td>
+                            </tr>
+                         
+                            <tr class="text-margin">
+                                <td><div class="capsule_gray">429문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    국어
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">280문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    영어
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">378문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    수학
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">603문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    사회
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">573문제</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="question-shortcut">
+                        <div class="inline">
+                        <div class="semi-title">IT</div>
+                        <a href="#">더 보기</a>
+                        </div>
+                        <div class="inline"> 
+                            <table class="multi-table" onclick="location.href='./loggedin-linux-exam.html'">
+                            <tr >
+                                <td  style="text-align: left;">
+                                    리눅스마스터 2급
+                                </td>
+                            </tr>
+                         
+                            <tr class="text-margin">
+                                <td><div class="capsule_gray">429문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    SQLD
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">280문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    네트워크관리사2급
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">378문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    정보보안산업기사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">603문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    비계기능사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">573문제</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="question-shortcut">
+                        <div class="inline">
+                        <div class="semi-title">농업</div>
+                        <a href="#">더 보기</a>
+                        </div>
+                        <div class="inline"> 
+                            <table class="multi-table" onclick="location.href='#'">
+                            <tr >
+                                <td  style="text-align: left;">
+                                    조경 기능사
+                                </td>
+                            </tr>
+                         
+                            <tr class="text-margin">
+                                <td><div class="capsule_gray">429문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    농산물품질관리사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">280문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    종자기사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">378문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    화훼장식 기능사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">603문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    유기농업 기능사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">573문제</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                    <div class="question-shortcut">
+                        <div class="inline">
+                        <div class="semi-title">검정고시</div>
+                        <a href="#">더 보기</a>
+                        </div>
+                        <div class="inline"> 
+                            <table class="multi-table" onclick="location.href='#'">
+                            <tr >
+                                <td  style="text-align: left;">
+                                    국어
+                                </td>
+                            </tr>
+                         
+                            <tr class="text-margin">
+                                <td><div class="capsule_gray">429문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    수학
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">280문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    사회
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">378문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    과학
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">603문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    영어
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">573문제</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                    <!--하단부 시작-->
+                    <div class="question-shortcut">
+                        <div class="inline">
+                        <div class="semi-title">보건</div>
+                        <a href="#">더 보기</a>
+                        </div>
+                        <div class="inline"> 
+                            <table class="multi-table" onclick="location.href='#'">
+                            <tr >
+                                <td  style="text-align: left;">
+                                    보건의료정보관리사
+                                </td>
+                            </tr>
+                         
+                            <tr class="text-margin">
+                                <td><div class="capsule_gray">429문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    보건교육사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">280문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    병원행정사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">378문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    건강보험청구관리사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">603문제</div></td>
+                            </tr>
+                        </table>
+                              <table class="multi-table" onclick="location.href='#'">
+                            <tr class="text-margin">
+                                <td  style="text-align: left;">
+                                    보험심사평가사
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="capsule_gray">573문제</div></td>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                    
+                     <section>
+                     <div class="famous-questions">
+                        <div class="semi-title">인기 자격증 기출문제</div>
+                        </div>
+                        <ul class="table-wrapper">
+                            <li>
+                        <div class="inline-table"> 
+                        <table class="famous-table">
+                            <tr class="text-margin">
+                                <td colspan="4" style="text-align: left;">
+                                    정보처리기사
+                                </td>
+                            </tr>
+                            <tr class="text-margin">
+                                <td colspan="4" style="text-align: left;">컴퓨터 시스템의 분석, 설계, 구현, 운영 및 관리에 관한 전문 지식과 기술을 검정하는 국가기술자격증</td>
+                            </tr>
+                            <tr class="capsule-wrapper">
+                               <td><div class="capsule">2023년 1회</div></td> <td><div class="capsule">2024년 3회</div></td>
+                                <td><div class="capsule">2024년 4회</div></td>
+                            </tr>
+                        </table>
+                        </div>
+                            </li>
+                            <li>
+                        <div class="inline-table"> 
+                        <table class="famous-table">
+                            <tr class="text-margin">
+                                <td colspan="4" style="text-align: left;">
+                                    JLPT N2
+                                </td>
+                            </tr>
+                            <tr class="text-margin">
+                                <td colspan="4" style="text-align: left;">일상적인 장면에서 사용되는 일본어를 어느 정도 이해할 수 있는 레벨을 검증하는 일본어능력시험</td>
+                            </tr>
+                            <tr class="capsule-wrapper">
+                              <td><div class="capsule">2022년 2회</div></td> <td><div class="capsule">2023년 1회</div></td>
+                                <td><div class="capsule">2023년 2회</div></td> <td><div class="capsule">2025년 2회</div></td>
+                            </tr>
+                        </table>
+                        </div>
+                            </li>
+                            <li>
+                                <div>
+                            
+                        
+                        <div class="inline-table"> 
+                        <table class="famous-table">
+                            <tr class="text-margin">
+                                <td colspan="4" style="text-align: left;">
+                                    한식조리기능사
+                                </td>
+                            </tr>
+                            <tr class="text-margin">
+                                <td colspan="4" style="text-align: left;">한국 전통 음식과 현대식 한국 요리를 조리할 수 있는 능력을 검정하는 국가기술자격증</td>
+                            </tr>
+                            <tr class="capsule-wrapper">
+                                    <td><div class="capsule">2019년 7회차</div></td> <td><div class="capsule">2019년 8회차</div></td>
+                                <td><div class="capsule">2023년 2회차</div></td> 
+                            </tr>
+                        </table>
+                        </div>
+                        
+                        </div>
+                            </li>
+                        </ul>
+                        
+                    
+                </section>
+                </div>
+                    </section>
+                    
+               
+                
+                
+        
+        
+
+    </main>
+    <!--메인 끝-->
+
+    <!--푸터-->
+<footer>
+<div>이용문의 minseo00515@naver.com</div>
+</footer>
+<!--버튼 java script-->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.morebtn');
+
+    // 1. 초기 강조: "전체" 버튼 찾기 (텍스트 기준 또는 ID 부여)
+    const defaultButton = Array.from(buttons).find(btn => btn.textContent.trim() === '전체');
+    if (defaultButton) {
+        defaultButton.style.backgroundColor = '#030816'; // 강조 배경색
+        defaultButton.style.color = 'white';
+    }
+
+    // 2. 클릭 이벤트 설정
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 모든 버튼 초기화
+            buttons.forEach(btn => {
+                btn.style.backgroundColor = '#202A38';
+                btn.style.color = 'white';
+            });
+
+            // 클릭된 버튼 강조
+            button.style.backgroundColor = '#030816';
+            button.style.color = 'white';
+        });
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>리눅스마스터 2급 기출문제</title>
+    <style>
+        body {
+            font-family: '맑은 고딕', sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        .exam-container {
+            max-width: 1300px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            /* border-bottom: 1px solid #ddd; */
+        }
+        .question-title {
+            font-weight: bold;
+            /* margin-bottom: 10px; */
+            font-size: larger;
+        }
+        .options label {
+            display: block;
+            margin: 6px 0;
+            cursor: pointer;
+        }
+        .submit-btn {
+            display: block;
+            margin: 40px auto 0;
+            padding: 12px 25px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .question-number {
+            max-width: 10px;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .choices td {
+            border: none;
+            padding-top: 2.5px;
+            padding-bottom: 2.5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+       body {
+            background: #030816;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: solid 1px white;
+        }
+
+        .nav-left,
+        .nav-center,
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-center {
+            flex: 1;
+            justify-content: center;
+        }
+
+        #nav_item {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav_item li {
+            margin: 0 10px;
+        }
+
+        a {
+            color: white;
+            text-decoration-line: none;
+        }
+
+        .home {
+            font-size: x-large;
+            font-weight: bold;
+            margin: 0 40px 0 20px;
+        }
+
+        .auth-buttons .auth-link {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .search {
+            position: relative;
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 14px;
+            background-color: #101232;
+            color: white;
+        }
+
+        img {
+            position: absolute;
+            width: 17px;
+            top: 10px;
+            right: 12px;
+            margin: 0;
+        }
+
+        .center {
+            height: 500px;
+            background-color: #152238;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* 원하는 크기로 조정 */
+
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+            position: relative;
+            top: 50%;
+            transform: translateY(-10%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 반투명 배경 */
+            padding: 20px;
+            border-radius: 8px;
+            width: 350%;
+            height: 520px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay h2 {
+            margin: 0 0 10px;
+        }
+
+        .overlay button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #ffcc00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btndiv {
+            display: inline;
+        }
+
+        .ver_center {
+            padding-top: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            width: 48%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            /* border: 1px solid #ccc; */
+        }
+          td {
+            padding: 10px;
+            /* border: 1px solid #ccc; */
+            vertical-align: top;
+        }
+
+        .capsule_green {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: green;
+            border-radius: 25px;
+            color: #74D698;
+            margin-bottom: 10px;
+        }
+
+        .capsule_blue {
+            float: right;
+            margin: 5px;
+            width: 50%;
+            padding: 5px;
+            background-color: #1F3A8A;
+            border-radius: 25px;
+            color: #91C2F8;
+            margin-bottom: 10px;
+        }
+
+        .capsule_gray {
+            float: right;
+            width: 50%;
+            padding: 5px;
+            margin: 5px;
+            background-color: #202A38;
+            border-radius: 25px;
+            color: #B3B8C0;
+            margin-bottom: 10px;
+
+        }
+        .capsule_white {
+            float: left;
+            width: fit-content;
+            padding: 3px;
+            padding-left: 7px;
+            padding-right: 7px;
+            margin: 5px;
+            background-color: white;
+            border-radius: 25px;
+            color: #202A38;
+            margin-bottom: 10px;
+            font-size: 13px;
+
+        }
+     
+        .inline {
+            display: flex;
+        }
+
+        .morebtn {
+            font-size: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            width: max-content;
+            padding: 5px;
+            border: solid 2px #141C2C;
+            background-color: #030816;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btm_section {
+            background-color: #202939;
+            height: 450px
+        }
+
+        .divText {
+            line-height: 10px;
+            margin-top: 100px;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            /* 가운데 정렬 */
+            gap: 50px;
+            row-gap: 0;
+            /* 테이블 사이 간격 */
+            flex-wrap: wrap;
+            /* 한 줄 넘치면 다음 줄로 */
+            padding: 0;
+            list-style: none;
+        }
+
+        .table-wrapper li {
+            display: inline-block;
+        }
+
+        .multi-table {
+            padding: 25px;
+            width: 500px;
+            /* background-color: #030816; */
+            color: black;
+            border-radius: 10px;
+            
+        }
+
+        .tr-margin {
+            padding-bottom: 15px;
+        }
+
+        .small-icon {
+            float: right;
+            width: 20px;
+        }
+        .test-icons {
+            float: left;
+            width: 20px;
+            margin-right: 5px;
+        }
+
+        .left-align {
+            text-align: left;
+            /* padding: 30px; */
+            padding-left: 30px;
+            padding-top: 30px;
+        }
+
+        #big-title {
+            font-size: xx-large;
+        }
+
+        .select-desc {
+            text-align: left;
+            margin-left: 10px;
+            font-size: medium;
+            margin-bottom: 10px;
+        }
+
+        .tapable-table {
+            cursor: pointer;
+        }
+        .test-title {
+            text-align: left;
+            font-size: x-large;
+            padding-bottom: 10px;
+            white-space: nowrap; 
+        }
+        .question-count {
+            margin-left: 10px;
+            text-align: left;
+            justify-content: space-between;
+            padding-bottom: 5px;
+            white-space: nowrap; 
+        }
+        .test-time {
+            /* margin-right: 10px; */
+            padding-bottom: 5px;
+            white-space: nowrap; 
+            text-align: right;
+            float: right;
+
+        }
+        .test-count {
+            margin-left: 10px;
+            text-align: left;
+            /* justify-content: space-between; */
+            padding-bottom: 5px;
+            white-space: nowrap; 
+
+        }
+        .get-test {
+            padding: 7px;
+            text-align: center;
+            border: solid 1px white;
+            background-color: white;
+            color: #030816;
+            border-radius: 10px;
+        }
+        .content-margin {
+        margin-top: 15px;
+        }
+        .set-margin {
+            margin-right: 10px;
+        }
+        .list-title {
+            font-size: larger;
+            padding-top: 10px;
+            padding-bottom: 0px;
+        }
+        .list-num {
+            list-style-type: decimal;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .info-title {
+            font-size: x-large;
+            padding-bottom: 10px;
+        }
+        .info-desc {
+            font-size: medium;
+            padding-bottom: 10px;
+        }
+        .list-dot {
+            list-style-type: disc;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+         table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        td {
+            padding: 10px;
+            /* border: 1px solid #ccc; */
+            vertical-align: top;
+        }
+        .question-number {
+            width: 50px;
+            font-weight: bold;
+        }
+        .choices td {
+            border: none;
+            width: 150px;
+        }
+        .question-image {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.question-image img {
+    width: 400px;
+    display: block;
+    position: relative;
+    padding-left: 10px;
+
+    /* top: 50%; */
+    /* transform: translateY(-10%); */
+
+}
+        .choice-button.correct {
+  background-color: #6ee7b7; /* 연한 초록 */
+}
+.float-button-container {
+	z-index: 1000;
+	position: fixed;
+	transform: translate(700%, 0%);
+	left: 50%;
+	bottom: 30px;
+    /* border: solid 1px blue; */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	padding:0 10px;
+
+	background: #82CAFF;
+    
+	box-shadow: 0 0px 15px 0 #82CAFF;
+	/* border:1px solid #e9e9e9; */
+	border-radius: 30px;
+	text-decoration: none !important;
+    height: 100px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.float-button {
+    width: 50px;
+	display: flex;
+	align-items: center;
+	padding:0 20px;
+    /* border: solid 1px red; */
+	cursor: pointer;
+	color: white !important;
+	font-size: 13px;
+	text-decoration: none !important;
+	white-space: nowrap;
+	font-weight: bold;
+	transition: 0.5s;
+}
+
+.float-button:hover {
+	transform: translate(0%, -20%);
+}
+/* 모달 기본 설정 */
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  right: 20px;
+  bottom: 20px;
+  width: 350px;
+  max-height: 1000px;
+}
+
+/* 채팅창 본체 */
+.chat-modal {
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+	box-shadow: 0 0px 15px 0 #82CAFF;
+}
+
+/* 헤더 */
+.chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 채팅창 내용 */
+.chat-body {
+  padding: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* 채팅 메시지 */
+.message {
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 70%;
+  line-height: 1.4;
+  font-size: 14px;
+}
+.message.received {
+  background-color: #f1f1f1;
+  align-self: flex-start;
+}
+
+.message.sent {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+/* 입력창 */
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+  padding: 8px;
+}
+.chat-input input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+.chat-input button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.selectForm {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.close-button {
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <!--Header-->
+    <header>
+        <nav>
+            <div class="nav-left">
+                <ul id="nav_item">
+                <li style="padding-left: 100px;"><a class="home"
+                        href="./loggedin-main.html">기출풀(Full)</a></li>
+                <li><a href="./loggedin-questions.html">기출문제</a></li>
+                <li><a href="./loggedin-test-schedules.html">시험일정</a></li>
+                <li><a href="./loggedin-mock-test.html">모의고사</a></li>
+                <li><a href="./loggedin-tips.html">시험팁</a></li>
+                <li><a href="./loggedin-subscribe.html">구독</a></li>
+            </ul>
+            </div>
+            <div class="nav-center">
+                <div class="search">
+                    <input type="text" placeholder="검색어 입력">
+                    <img src="../img/searchIcon.png">
+                </div>
+            </div>
+            <div class="nav-right auth-buttons">
+                <a href="./mypage.html" class="auth-link">최민서님</a>
+                <a href="../main.html" class="auth-link">로그아웃</a>
+            </div>
+        </nav>
+    </header>
+    <!--Header End-->
+  <main>
+    <div class="exam-container" style="margin-top: 20px;">
+    <h1>리눅스마스터 2급 1차 필기 모의고사</h1>
+      <div class="table-wrapper">
+
+      <section id="quiz-container">
+    <!-- 여기에 문제들이 JavaScript로 동적으로 추가됨 -->
+  </section>
+  </div>
+  </div>
+
+    </main>
+      <script>
+        const quizData = [
+  {
+    question: "다음 (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q1.jpg",
+    options: ["40", "50", "60", "70"],
+    correct: 2
+  },
+  {
+    question: "다음 설명에 해당하는 RAID 관련 기술로 알맞은 것은?",
+    image: "../img/Questions/Q2.jpg",
+    options: ["스트라이핑(Striping)", "미러링(Mirroring)", "패리티(Parity)", "ECC(Error Check &Correction)"],
+    correct: 0
+  },
+  {
+    question: "다음 중 LVM 구성할 때 가장 먼저 생성되는 것은?",
+    options: ["VG(Volume Group)", "LV(Logical Volume)", "PV(Physical Volume)", "PE(Physical Extend)"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프린터 큐의 작업 정보를 확인하는 명령어로 알맞은 것은?",
+    options: ["lp", "lpr", "lprm", "lpstat"],
+    correct: 3
+  },
+  {
+    question: "다음 설명에 해당하는 명칭으로 알맞은 것은?",
+    image: "../img/Questions/Q5.jpg",
+    options: ["ALSA", "CUPS", "SANE", "OSS"],
+    correct: 3
+  },
+  {
+    question: "다음 중 스캐너 사용과 관련된 프로그램으로 알맞은 것은?",
+    options: ["ALSA", "CUPS", "SANE", "LPRng"],
+    correct: 2
+  },
+  {
+    question: "다음 중 데비안 계열 리눅스에서 환경 설정 파일도 포함해서 vsftpd 패키지를 제거하는 명령으로 알맞은 것은?",
+    options: [
+      "apt-get purge vsftpd",
+      "apt-get remove vsftpd",
+      "apt-get erase vsftpd",
+      "apt-get delete vsftpd"
+    ],
+    correct: 0
+  },
+  {
+    question: "다음 중 rpm 명령으로 의존성이 있는 패키지를 제거하는 명령으로 알맞은 것은?",
+    options: [
+      "rpm -d nmap --nodeps",
+      "rpm -e nmap --nodeps",
+      "rpm erase nmap --nodeps",
+      "rpm delete nmap -nodeps"
+    ],
+    correct: 1
+  },
+  {
+    question: "다음은 확장 패키지 관련 저장소를 설치하는 과정이다. (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q9.jpg",
+    options: ["epel", "epel-repository", "epel-release", "epel-download"],
+    correct: 2
+  },
+  {
+    question: "다음은 다운로드 받은 소스 파일의 내용만을 확인하는 과정이다. (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q10.jpg",
+    options: ["jxvf", "Jxvf", "jtvf", "Jtvf"],
+    correct: 2
+  },
+  {
+    question: "다음 설명에 해당하는 명령으로 알맞은 것은?",
+    image: "../img/Questions/Q11.jpg",
+    options: ["make init", "make zero", "make clean", "make neat"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프로그램을 소스 파일로 설치하는 과정으로 알맞은 것은?",
+    options: [
+      "configure → make → make install",
+      "make → configure → make install",
+      "make → make install → configure",
+      "make install → configure → make"
+    ],
+    correct: 0
+  },
+  {
+    question: "다음 설명에 해당하는 명령으로 알맞은 것은?",
+    image: "../img/Questions/Q11.jpg",
+    options: ["make init", "make zero", "make clean", "make neat"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프로그램을 소스 파일로 설치하는 과정으로 알맞은 것은?",
+    options: [
+      "configure → make → make install",
+      "make → configure → make install",
+      "make → make install → configure",
+      "make install → configure → make"
+    ],
+    correct: 0
+  },
+  
+  {
+    question: "다음 설명에 해당하는 명령으로 알맞은 것은?",
+    image: "../img/Questions/Q11.jpg",
+    options: ["make init", "make zero", "make clean", "make neat"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프로그램을 소스 파일로 설치하는 과정으로 알맞은 것은?",
+    options: [
+      "configure → make → make install",
+      "make → configure → make install",
+      "make → make install → configure",
+      "make install → configure → make"
+    ],
+    correct: 0
+  },
+  {
+    question: "다음 중 리눅스에서 사용되는 온라인 패키지 관리 도구로 거리가 먼 것은?",
+    options: ["dnf", "rpm", "zypper", "apt-get"],
+    correct: 1
+  },
+  {
+    question: "다음 중 레드햇 계열 리눅스에서 사용되는 패키지 관리 도구로 거리가 먼 것은?",
+    options: ["dnf", "rpm", "zypper", "yum"],
+    correct: 2
+  },
+  {
+    question: "다음중 vi 편집기의 ex 명령모드에 대한 설명으로 틀린 것은?",
+    options: [
+      "w → 작업중인 내용을 저장한다.",
+      "w 파일명 → 지정한 '파일명'으로 저장한다.",
+      "wg → 변경된 내용을 저장하고 종료한다.",
+      "q → 수정된 사항이 있어도 무조건 종료한다."
+    ],
+    correct: 3
+  },
+  {
+    question: "다음 (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q16.jpg",
+    options: ["㉠ /, ㉡ n", "㉠ ?, ㉡ n", "㉠ /, ㉡ N", "㉠ ?, ㉡ N"],
+    correct: 0
+  },
+  {
+    question: "다음 중 vi 편집기에서 linux로 끝나는 줄의 마지막에 마침표(.)을 덧붙이도록 치환하는 명령으로 알맞은 것은?",
+    options: [
+      ":% s/linux./linux$/",
+      ":% s/linux$/linux./",
+      ":% s/linux/linux./",
+      ":% s/linux/linux$/"
+    ],
+    correct: 1
+  },
+  {
+    question: "다음 (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q1.jpg",
+    options: ["40", "50", "60", "70"],
+    correct: 2
+  },
+  {
+    question: "다음 설명에 해당하는 RAID 관련 기술로 알맞은 것은?",
+    image: "../img/Questions/Q2.jpg",
+    options: ["스트라이핑(Striping)", "미러링(Mirroring)", "패리티(Parity)", "ECC(Error Check &Correction)"],
+    correct: 0
+  },
+  {
+    question: "다음 중 LVM 구성할 때 가장 먼저 생성되는 것은?",
+    options: ["VG(Volume Group)", "LV(Logical Volume)", "PV(Physical Volume)", "PE(Physical Extend)"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프린터 큐의 작업 정보를 확인하는 명령어로 알맞은 것은?",
+    options: ["lp", "lpr", "lprm", "lpstat"],
+    correct: 3
+  },
+  {
+    question: "다음 설명에 해당하는 명칭으로 알맞은 것은?",
+    image: "../img/Questions/Q5.jpg",
+    options: ["ALSA", "CUPS", "SANE", "OSS"],
+    correct: 3
+  },
+  {
+    question: "다음 중 스캐너 사용과 관련된 프로그램으로 알맞은 것은?",
+    options: ["ALSA", "CUPS", "SANE", "LPRng"],
+    correct: 2
+  },
+  {
+    question: "다음 중 데비안 계열 리눅스에서 환경 설정 파일도 포함해서 vsftpd 패키지를 제거하는 명령으로 알맞은 것은?",
+    options: [
+      "apt-get purge vsftpd",
+      "apt-get remove vsftpd",
+      "apt-get erase vsftpd",
+      "apt-get delete vsftpd"
+    ],
+    correct: 0
+  },
+  
+  {
+    question: "다음 (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q1.jpg",
+    options: ["40", "50", "60", "70"],
+    correct: 2
+  },
+  {
+    question: "다음 설명에 해당하는 RAID 관련 기술로 알맞은 것은?",
+    image: "../img/Questions/Q2.jpg",
+    options: ["스트라이핑(Striping)", "미러링(Mirroring)", "패리티(Parity)", "ECC(Error Check &Correction)"],
+    correct: 0
+  },
+  {
+    question: "다음 중 LVM 구성할 때 가장 먼저 생성되는 것은?",
+    options: ["VG(Volume Group)", "LV(Logical Volume)", "PV(Physical Volume)", "PE(Physical Extend)"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프린터 큐의 작업 정보를 확인하는 명령어로 알맞은 것은?",
+    options: ["lp", "lpr", "lprm", "lpstat"],
+    correct: 3
+  },
+  {
+    question: "다음 설명에 해당하는 명칭으로 알맞은 것은?",
+    image: "../img/Questions/Q5.jpg",
+    options: ["ALSA", "CUPS", "SANE", "OSS"],
+    correct: 3
+  },
+  {
+    question: "다음 중 스캐너 사용과 관련된 프로그램으로 알맞은 것은?",
+    options: ["ALSA", "CUPS", "SANE", "LPRng"],
+    correct: 2
+  },
+  {
+    question: "다음 중 데비안 계열 리눅스에서 환경 설정 파일도 포함해서 vsftpd 패키지를 제거하는 명령으로 알맞은 것은?",
+    options: [
+      "apt-get purge vsftpd",
+      "apt-get remove vsftpd",
+      "apt-get erase vsftpd",
+      "apt-get delete vsftpd"
+    ],
+    correct: 0
+  },
+  
+  {
+    question: "다음 중 emacs 편집기를 개발한 인물로 알맞은 것은?",
+    options: ["빌 조이", "리처드 스톨만", "브람 브레나르", "귀도 반 로섬"],
+    correct: 1
+  },
+  {
+    question: "다음 중 nano 편집기에서 현재 커서가 위치한 줄의 처음으로 이동할 때 사용하는 키 조합으로 알맞은 것은?",
+    options: ["[Ctrl]+[a]", "[Ctrl]+[e]", "[Ctrl]+[o]", "[Ctrl]+[i]"],
+    correct: 0
+  },
+  {
+    question: "다음 중 X 윈도 환경에서만 사용 가능한 편집기로 알맞은 것은?",
+    options: ["nano", "pico", "kwrite", "vim"],
+    correct: 2
+  },
+  {
+    question: "다음 중 작업번호가 2번인 백그라운드 프로세스를 종료시키는 명령으로 알맞은 것은?",
+    options: ["kill 2", "kill %2", "kill -j 2", "kill -b 2"],
+    correct: 1
+  },
+  {
+    question: "ps 명령의 상태(STAT) 코드 중에 작업은 종료되었으나 부모프로세스에 의해 회수되지 않아 메모리를 차지하고 상태를 나타내는 값으로 알맞은 것은?",
+    options: ["R", "S", "T", "Z"],
+    correct: 3
+  },
+  {
+    question: "다음 중 프로세스 관련 명령어로 설정 가능한 NI 값의 범위로 알맞은 것은?",
+    options: ["-19 ~ 19", "-19 ~ 20", "-20 ~ 19", "-20 ~ 20"],
+    correct: 2
+  }, { question: "다음 설명에 해당하는 명칭으로 알맞은 것은?",
+    image: "../img/Questions/Q5.jpg",
+    options: ["ALSA", "CUPS", "SANE", "OSS"],
+    correct: 3
+  }
+  ,
+  {
+    question: "cron을 이용해서 해당 스크립트를 매주 1회씩 주기적으로 실행하려고 한다. (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q24.jpg",
+    options: ["1 1 1 * *", "1 1 * 1 *", "1 1 * * 1", "* 1 1 1 *"],
+    correct: 2
+  } ,
+  {
+    question: "다음 (괄호) 안에 들어갈 내용으로 알맞은 것은?",
+    image: "../img/Questions/Q1.jpg",
+    options: ["40", "50", "60", "70"],
+    correct: 2
+  },
+  {
+    question: "다음 설명에 해당하는 RAID 관련 기술로 알맞은 것은?",
+    image: "../img/Questions/Q2.jpg",
+    options: ["스트라이핑(Striping)", "미러링(Mirroring)", "패리티(Parity)", "ECC(Error Check &Correction)"],
+    correct: 0
+  },
+  {
+    question: "다음 중 LVM 구성할 때 가장 먼저 생성되는 것은?",
+    options: ["VG(Volume Group)", "LV(Logical Volume)", "PV(Physical Volume)", "PE(Physical Extend)"],
+    correct: 2
+  },
+  {
+    question: "다음 중 프린터 큐의 작업 정보를 확인하는 명령어로 알맞은 것은?",
+    options: ["lp", "lpr", "lprm", "lpstat"],
+    correct: 3
+  },
+  {
+    question: "다음 설명에 해당하는 명칭으로 알맞은 것은?",
+    image: "../img/Questions/Q5.jpg",
+    options: ["ALSA", "CUPS", "SANE", "OSS"],
+    correct: 3
+  },
+  {
+    question: "다음 중 스캐너 사용과 관련된 프로그램으로 알맞은 것은?",
+    options: ["ALSA", "CUPS", "SANE", "LPRng"],
+    correct: 2
+  },
+  {
+    question: "다음 중 데비안 계열 리눅스에서 환경 설정 파일도 포함해서 vsftpd 패키지를 제거하는 명령으로 알맞은 것은?",
+    options: [
+      "apt-get purge vsftpd",
+      "apt-get remove vsftpd",
+      "apt-get erase vsftpd",
+      "apt-get delete vsftpd"
+    ],
+    correct: 0
+  },
+  
+];
+
+const quizContainer = document.getElementById("quiz-container");
+
+const wrapperDiv = document.createElement("div");
+wrapperDiv.classList.add("table-wrapper");
+
+quizData.forEach((q, i) => {
+  const table = document.createElement("table");
+  table.classList.add("multi-table");
+
+  const row = document.createElement("tr");
+
+  // 번호
+  const numberCell = document.createElement("td");
+  numberCell.classList.add("question-number");
+  numberCell.textContent = `${i + 1}.`;
+
+  // 문제 및 보기들
+  const contentCell = document.createElement("td");
+
+  const titleDiv = `<div class="question-title">${q.question}</div>`;
+  const imageDiv = q.image
+    ? `<div class="question-image"><img src="${q.image}" alt="문제 이미지"></div>`
+    : "";
+
+  // 보기 테이블
+  let choicesTable = '<table class="choices">';
+  for (let j = 0; j < q.options.length; j += 2) {
+    choicesTable += "<tr>";
+    for (let k = 0; k < 2; k++) {
+      const index = j + k;
+      if (q.options[index]) {
+        const isCorrect = index === q.correct;
+        choicesTable += `<td>
+  <label class="choice-button ${isCorrect ? 'correct' : ""}" data-index="${index}" data-question="${i}">
+    <input type="radio" name="q${i}" value="${index}" hidden checked>
+    <span class="choice-symbol">${['①', '②', '③', '④'][index]}</span>
+    <span class="choice-content">${q.options[index]}</span>
+  </label>
+</td>`;
+      }
+    }
+    choicesTable += "</tr>";
+  }
+  choicesTable += "</table>";
+
+  contentCell.innerHTML = titleDiv + imageDiv + choicesTable;
+  row.appendChild(numberCell);
+  row.appendChild(contentCell);
+  table.appendChild(row);
+  wrapperDiv.appendChild(table);
+});
+
+// quiz-container에 추가
+quizContainer.appendChild(wrapperDiv);
+      </script>
+<!-- Floating Buttons -->
+<div id="openModalBtn" class="float-button-container" onclick="location.href">
+  <svg width="70px" height="70px" viewBox="0 0 24 24" fill="none">
+
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+<g id="SVGRepo_iconCarrier"> <path d="M12 7C9.23858 7 7 9.23858 7 12C7 13.3613 7.54402 14.5955 8.42651 15.4972C8.77025 15.8484 9.05281 16.2663 9.14923 16.7482L9.67833 19.3924C9.86537 20.3272 10.6862 21 11.6395 21H12.3605C13.3138 21 14.1346 20.3272 14.3217 19.3924L14.8508 16.7482C14.9472 16.2663 15.2297 15.8484 15.5735 15.4972C16.456 14.5955 17 13.3613 17 12C17 9.23858 14.7614 7 12 7Z" stroke="#ffffff" stroke-width="2"/> <path d="M12 4V3" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M18 6L19 5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M20 12H21" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M4 12H3" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M5 5L6 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M10 17H14" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
+</svg>
+</div>
+<!-- Floating Buttons End -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
+
+<!-- 채팅 모달 -->
+
+<!-- Lottie 애니메이션용 라이브러리 (CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
+
+<!-- 모달 구조 -->
+<div id="modal" class="modal hidden">
+  <div class="chat-modal">
+    <div class="chat-header">
+      <span class="chat-title">챗봇과 대화</span>
+      <span class="close-button">&times;</span>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <!-- 기본 인사 메시지 -->
+      <div class="message received">
+        저는 합격을 도와드릴 AI 푸리(Furi)에요!<br>
+        어떤 게 궁금하신가요?
+      </div>
+    </div>
+    <div class="chat-input" style="display: block;">
+               <select class="selectForm" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                            <option value="#">모든 자격증 보기</option>
+                            <option value="ERP인사정보관리사">ERP인사정보관리사</option>
+                            <option value="ERP회계정보관리사">ERP회계정보관리사</option>
+                            <option value="GTQ">GTQ</option>
+                            <option value="GTQi">GTQi</option>
+                            <option value="ITQ">ITQ</option>
+                            <option value="sqld.html">SQLD</option>
+                            <option value="SQLP">SQLP</option>
+                            <option value="가축인공수정사">가축인공수정사</option>
+                            <option value="간호사">간호사</option>
+                            <option value="간호조무사">간호조무사</option>
+                            <option value="감정사">감정사</option>
+                            <option value="감정평가사">감정평가사</option>
+                            <option value="건축사">건축사</option>
+                            <option value="건축물에너지평가사">건축물에너지평가사</option>
+                            <option value="경매사">경매사</option>
+                            <option value="경영지도사">경영지도사</option>
+                            <option value="공인노무사">공인노무사</option>
+                            <option value="공인중개사">공인중개사</option>
+                            <option value="공인회계사">공인회계사</option>
+                            <option value="관세사">관세사</option>
+                            <option value="교통안전관리자">교통안전관리자</option>
+                            <option value="교육교사">교육교사</option>
+                            <option value="나무의사">나무의사</option>
+                            <option value="리눅스마스터 2급" selected>리눅스마스터 2급</option>
+                            <option value="반려동물관리사">반려동물관리사</option>
+                            <option value="바리스타">바리스타</option>
+                            <option value="배관·배선기사">배관·배선기사</option>
+                            <option value="보험중개사">보험중개사</option>
+                            <option value="보세사">보세사</option>
+                            <option value="보안경비지도사">보안경비지도사</option>
+                            <option value="보건의료기사 (방사선사 등)">보건의료기사 (방사선사 등)</option>
+                            <option value="병원코디네이터">병원코디네이터</option>
+                            <option value="빅데이터전문가">빅데이터전문가</option>
+                            <option value="사진·영상촬영 전문가">사진·영상촬영 전문가</option>
+                            <option value="사서교사">사서교사</option>
+                            <option value="사서 민간자격">사서 민간자격</option>
+                            <option value="사내·기업 자체 자격증">사내·기업 자체 자격증</option>
+                            <option value="사회복지사">사회복지사</option>
+                            <option value="사회환경교육지도사">사회환경교육지도사</option>
+                            <option value="산업보건지도사">산업보건지도사</option>
+                            <option value="산업안전지도사">산업안전지도사</option>
+                            <option value="선행·정리수납전문가">선행·정리수납전문가</option>
+                            <option value="세무사">세무사</option>
+                            <option value="소방시설관리사">소방시설관리사</option>
+                            <option value="수면지도사">수면지도사</option>
+                            <option value="수산물품질관리사">수산물품질관리사</option>
+                            <option value="수의사">수의사</option>
+                            <option value="심리상담사">심리상담사</option>
+                            <option value="아마추어무선기사">아마추어무선기사</option>
+                            <option value="약사">약사</option>
+                            <option value="언어·관광 자격 (통역안내사 등)">언어·관광 자격 (통역안내사 등)</option>
+                            <option value="여행가이드">여행가이드</option>
+                            <option value="요양보호사">요양보호사</option>
+                            <option value="운송 자격 (화물운송종사자 등)">운송 자격 (화물운송종사자 등)</option>
+                            <option value="응급구조사">응급구조사</option>
+                            <option value="이러닝전문가">이러닝전문가</option>
+                            <option value="인증 행정사류">인증 행정사류</option>
+                            <option value="작업치료사">작업치료사</option>
+                            <option value="재활상담사">재활상담사</option>
+                            <option value="정보보안기사">정보보안기사</option>
+                            <option value="정보처리기사">정보처리기사</option>
+                            <option value="정리컨설턴트">정리컨설턴트</option>
+                            <option value="주택관리사">주택관리사</option>
+                            <option value="중개사 보조과정">중개사 보조과정</option>
+                            <option value="지적재산권 전문가">지적재산권 전문가</option>
+                            <option value="직업상담사">직업상담사</option>
+                            <option value="집합분야 자격증">집합분야 자격증</option>
+                            <option value="철도차량운전면허">철도차량운전면허</option>
+                            <option value="청소년상담사">청소년상담사</option>
+                            <option value="초등방과후지도사">초등방과후지도사</option>
+                            <option value="총포화약안전관리자">총포화약안전관리자</option>
+                            <option value="컴퓨터활용능력">컴퓨터활용능력</option>
+                            <option value="컴퓨터프로그래밍 민간자격">컴퓨터프로그래밍 민간자격</option>
+                            <option value="컬러리스트">컬러리스트</option>
+                            <option value="코딩지도사">코딩지도사</option>
+                            <option value="콘벤션기획사">콘벤션기획사</option>
+                            <option value="키즈코딩지도사">키즈코딩지도사</option>
+                            <option value="통신사·조종사 계열">통신사·조종사 계열</option>
+                            <option value="투자자산운용사">투자자산운용사</option>
+                            <option value="파생상품투자권유자문인력">파생상품투자권유자문인력</option>
+                            <option value="펫테라피스트">펫테라피스트</option>
+                            <option value="평생교육사">평생교육사</option>
+                            <option value="필라테스강사">필라테스강사</option>
+                            <option value="플랜테리어 전문가">플랜테리어 전문가</option>
+                            <option value="플로리스트">플로리스트</option>
+                            <option value="프레젠테이션 스피치 자격증">프레젠테이션 스피치 자격증</option>
+                            <option value="폼롤러운동처방사">폼롤러운동처방사</option>
+                            <option value="한국어교육능력검정시험">한국어교육능력검정시험</option>
+                            <option value="한국어교실강사">한국어교실강사</option>
+                            <option value="항공정비사">항공정비사</option>
+                            <option value="해외 산업기술자격">해외 산업기술자격</option>
+                            <option value="헬스코치">헬스코치</option>
+                            <option value="홈베이킹강사">홈베이킹강사</option>
+                            <option value="홈스타일링 전문가">홈스타일링 전문가</option>
+                            <option value="환경교육지도사">환경교육지도사</option>
+                            <option value="회계정보처리사">회계정보처리사</option>
+                        </select>
+      <div style="display: flex;">
+        <input type="text" id="chat-text" placeholder="메시지를 입력하세요..." />
+        <button id="send-button">전송</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    //채팅시스템
+  const modal = document.getElementById('modal');
+  const floatBtn = document.querySelector('.float-button-container'); // 플로팅 버튼
+  const closeBtn = document.querySelector('.close-button');
+  const chatBody = document.getElementById('chat-body');
+  const sendBtn = document.getElementById('send-button');
+  const chatInput = document.getElementById('chat-text');
+
+  // 답변 맵 (입력: 답변)
+  const responses = {
+    "시험 일정": "시험 일정은 보통 매년 상반기/하반기로 나뉘어요.",
+    "1차 합격 기준": "1차 시험은 온라인 오픈북 시험으로 60점 이상 (50문제 중 30문제 이상) 득점시 합격이에요!" ,
+    "2차 합격 기준": "2차 시험은 과목별 40% 이상 득점, 평균 60점 이상 득점시 합격이에요!" ,
+    "LVM" : "LVM을 구성할 때 가장 먼저 생성되는 것은, 물리 디스크를 LVM에서 사용할 수 있도록 초기화하는 물리 볼륨(Physical Volume, PV) 입니다."
+  };
+function findResponse(text) {
+  const lowerText = text.toLowerCase(); // 대소문자 무시
+
+  for (const [keyword, answer] of Object.entries(responses)) {
+    if (lowerText.includes(keyword.toLowerCase())) {
+      return answer;
+    }
+  }
+  return "죄송해요. 아직 그 질문에 대한 답변은 준비 중이에요!";
+}
+  // 모달 열기
+  floatBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.remove('hidden');
+    chatInput.focus();
+  });
+
+  // 모달 닫기
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  // 전송 동작
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    
+    // 사용자 메시지 추가
+    const userMsg = document.createElement('div');
+    userMsg.className = 'message sent';
+    userMsg.textContent = text;
+    chatBody.appendChild(userMsg);
+
+    chatInput.value = '';
+
+    // 로딩 애니메이션 삽입
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'loading-message';
+    loadingDiv.id = 'loading';
+
+    const animDiv = document.createElement('div');
+    animDiv.style.width = "40px";
+    animDiv.style.height = "40px";
+    animDiv.id = "lottie-loader";
+
+    loadingDiv.appendChild(animDiv);
+    chatBody.appendChild(loadingDiv);
+
+    // Lottie 실행
+    lottie.loadAnimation({
+      container: animDiv,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://assets2.lottiefiles.com/packages/lf20_usmfx6bp.json' // 예시 대기 애니메이션
+    });
+
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // 3초 후 답장
+    setTimeout(() => {
+      document.getElementById('loading').remove();
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message received';
+
+      // 사용자 입력에 따른 답변
+botMsg.textContent = findResponse(text);
+      chatBody.appendChild(botMsg);
+
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 3000);
+  }
+
+  // 버튼 클릭 시
+  sendBtn.addEventListener('click', sendMessage);
+
+  // 엔터 키 입력
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+    //모달 코드
+  floatBtn.addEventListener('click', (e) => {
+    e.preventDefault(); // a 태그 동작 방지
+    modal.classList.remove('hidden');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.add('hidden');
+  });
+
+  // 바깥 영역 클릭 시 닫기
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+</script>
+</body>
+</html>
